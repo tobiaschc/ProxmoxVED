@@ -1,0 +1,53 @@
+{
+  "name": "Finanze",
+  "slug": "finanze",
+  "categories": [
+    23
+  ],
+  "date_created": "2026-09-27",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "interface_port": 8080,
+  "documentation": "https://github.com/finanze/finanze#readme",
+  "website": "https://finanze.me",
+  "repository": "https://github.com/finanze/finanze",
+  "logo": "https://raw.githubusercontent.com/finanze/finanze/main/frontend/app/public/finanze-app.png",
+  "description": "Self-hosted, private personal finance and net worth tracker that aggregates assets and investments across banks, brokers, crowdfunding platforms, crypto exchanges/wallets and real estate into one place.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/finanze.sh",
+      "config_path": "/opt/finanze-frontend/env-config.js",
+      "resources": {
+        "cpu": 2,
+        "ram": 2048,
+        "hdd": 6,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "The web UI is served on port 8080 (Nginx) and talks to the backend API on port 7592. Both must be reachable from your browser/network.",
+      "type": "info"
+    },
+    {
+      "text": "On first visit you'll be asked to create a local account; all data is stored encrypted in /opt/finanze/.storage inside the container.",
+      "type": "info"
+    },
+    {
+      "text": "Trade Republic login needs the Finanze desktop app (it solves TR's anti-bot challenge in a real browser window, which the web UI can't do). Install the desktop app on your computer (same version as the container), go to Settings > Advanced Settings > Server URL, set it to http://<IP>:7592 and log in to Trade Republic from there. The session is stored in the container, so the web UI can sync it until TR asks for a new login.",
+      "type": "info"
+    },
+    {
+      "text": "Mintos is not supported: it needs Selenium/reCAPTCHA dependencies that this script does not install.",
+      "type": "warning"
+    }
+  ]
+}
